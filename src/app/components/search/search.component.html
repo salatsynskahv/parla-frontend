@@ -1,0 +1,23 @@
+<div class="container">
+  <mat-form-field>
+    <input matInput type="text" class="word-input" [formControl]="word" (keydown.enter)="search($event)">
+  </mat-form-field>
+  <button mat-button color="primary" (click)="search(word.value)"> Search</button>
+</div>
+<div>
+  @if (translations().definitions) {
+    @for (item of translations().definitions; track $index) {
+      <div class="translation">{{ item }}</div>
+    }
+  }
+  @if (translations().alternatives) {
+    <h5>Opps... no translations were found, maybe you mean</h5>
+    @for (item of translations().alternatives; track $index) {
+      <div class="alternatives">
+        {{ item }}
+        <button mat-button color="primary" (click)="selectAlternative(item)"><mat-icon aria-hidden="false" fontIcon="add"></mat-icon></button>
+      </div>
+    }
+  }
+
+</div>

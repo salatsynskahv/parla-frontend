@@ -1,0 +1,11 @@
+<form [formGroup]="form" (ngSubmit)="submit()">
+  <div>
+    <mat-form-field>
+    <input matInput formControlName="email"/>
+  </mat-form-field>
+  </div>
+  <div><input decimalValidator matInput formControlName="password"></div>
+  <div>
+    <button type="submit">Submit</button>
+  </div>
+</form>

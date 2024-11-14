@@ -1,0 +1,11 @@
+{
+    "/mogobdApi": {
+        "target": "https://eu-central-1.aws.data.mongodb-api.com/app/data-ycpnbfz",
+        "secure": false,
+        "logLevel": "debug",
+        "changeOrigin": true,
+        "pathRewrite": {
+           "^/mogobdApi": ""
+        }
+    }
+}

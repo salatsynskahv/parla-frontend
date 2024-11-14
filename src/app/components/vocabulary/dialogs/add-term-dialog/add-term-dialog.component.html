@@ -1,0 +1,11 @@
+<div class="container">
+      <mat-form-field>
+        <mat-label>Term</mat-label>
+        <input matInput type="text" class="input" [formControl]="term">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Explanation</mat-label>
+        <input matInput type="text" class="input" [formControl]="explanation">
+      </mat-form-field>
+    <button mat-button color="primary" (click)="updateVocabulary()"> Add </button>
+</div>
