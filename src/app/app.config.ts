@@ -5,15 +5,15 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import {HttpClientModule, withFetch} from "@angular/common/http";
 import { provideHttpClient } from '@angular/common/http';
 import { provideStore } from '@ngrx/store';
+import {provideClientHydration} from "@angular/platform-browser";
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes),
     provideAnimationsAsync(),
     importProvidersFrom(HttpClientModule),
-    provideHttpClient(withFetch())
-    // provideClientHydration()
-    ,
+    provideHttpClient(withFetch()),
+    provideClientHydration(),
     provideStore()
 ]
 };

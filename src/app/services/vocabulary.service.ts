@@ -2,22 +2,20 @@ import {Injectable, inject, effect} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {AuthService} from './auth.service';
 import {Observable, map, of, tap} from 'rxjs';
-import {Term} from '../entities/vocabulary';
-import {resultMemoize} from "@ngrx/store";
-
+import {Term, Vocabulary} from '../entities/vocabulary';
 
 
 @Injectable({
   providedIn: 'root'
 })
-export class DictionaryService {
+export class VocabularyService {
 
   MERRIAM_WEBSTER_KEY = 'fa3ddf1c-ff98-432a-b104-5395d6dc3aad'
 
   constructor(private http: HttpClient, private authService: AuthService) {
   }
 
-  getDictionary(): Observable<Term[]> {
+  getVocabulary(userId: string): Observable<Vocabulary[]> {
     const headers = new HttpHeaders()
       .set('Content-Type', 'application/json')
       .set('api-key', "YCTdRepCZQzGYFisNyXcopwZdFPUZ0vgDbxUXiTTVUmtLYnGlyg67BPDWC4z8F2n");
@@ -26,8 +24,26 @@ export class DictionaryService {
     return this.http.post<any>('/mogobdApi/endpoint/data/v1/action/find', {
       dataSource: 'Cluster1',
       database: 'Parla',
-      collection: 'Dictionary',
-      filter: {}
+      collection: 'Vocabularies',
+      filter: {userId: userId}
+    }, {
+      headers: headers
+    }).pipe(
+      map(result => result.documents)
+    );
+  }
+
+  getVocabularyTerms(vocabularyId: string): Observable<Term[]> {
+    const headers = new HttpHeaders()
+      .set('Content-Type', 'application/json')
+      .set('api-key', "YCTdRepCZQzGYFisNyXcopwZdFPUZ0vgDbxUXiTTVUmtLYnGlyg67BPDWC4z8F2n");
+//       .set('Authorization', `Bearer ${this.authService.getAccessToken()}`);
+
+    return this.http.post<any>('/mogobdApi/endpoint/data/v1/action/find', {
+      dataSource: 'Cluster1',
+      database: 'Parla',
+      collection: 'Entries',
+      filter: {vocabularyId: vocabularyId}
     }, {
       headers: headers
     }).pipe(

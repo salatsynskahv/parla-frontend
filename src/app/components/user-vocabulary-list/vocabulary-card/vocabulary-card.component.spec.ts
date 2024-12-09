@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { UserVocabularyCardComponent } from './user-vocabulary-card.component';
+import { VocabularyCardComponent } from './vocabulary-card.component';
 
 describe('UserVocabularyCardComponent', () => {
-  let component: UserVocabularyCardComponent;
-  let fixture: ComponentFixture<UserVocabularyCardComponent>;
+  let component: VocabularyCardComponent;
+  let fixture: ComponentFixture<VocabularyCardComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [UserVocabularyCardComponent]
+      imports: [VocabularyCardComponent]
     })
     .compileComponents();
-    
-    fixture = TestBed.createComponent(UserVocabularyCardComponent);
+
+    fixture = TestBed.createComponent(VocabularyCardComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

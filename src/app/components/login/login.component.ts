@@ -1,7 +1,8 @@
-import {Component, inject} from '@angular/core';
-import {NonNullableFormBuilder, ReactiveFormsModule, Validators} from "@angular/forms";
+import {Component} from '@angular/core';
+import {ReactiveFormsModule} from "@angular/forms";
 import {MatFormField, MatInput} from "@angular/material/input";
 import {DecimalValidatorDirective} from "../../directives/decimal-validator.directive";
+import {SocialAuthService} from "../../services/social-auth.service";
 
 @Component({
   selector: 'app-login',
@@ -17,13 +18,18 @@ import {DecimalValidatorDirective} from "../../directives/decimal-validator.dire
 })
 export class Login {
 
-  fb = inject(NonNullableFormBuilder);
-  form = this.fb.group({
-    email: this.fb.control('', {validators: [Validators.required, Validators.email]}),
-    password: this.fb.control('', {validators: [Validators.required, Validators.maxLength(6)]})
-  });
+  constructor(private authService: SocialAuthService) {
+  }
 
-  submit() {
-    console.log(this.form.getRawValue());
+  signInWithGoogle(): void {
+   // this.authService.signIn(GoogleLoginProvider.PROVIDER_ID).then((user: SocialUser) => {
+     // console.log('User Info:', user);
+      // You can handle the user info here, such as sending it to your backend or storing it in local storage
+  //  });
+  }
+
+  // You can add a sign-out method if needed:
+  signOut(): void {
+   // this.authService.signOut();
   }
 }

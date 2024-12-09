@@ -1,12 +1,16 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 import {VocabularyComponent} from "./vocabulary/vocabulary.component";
+import {UserVocabularyComponent} from "../user-vocabulary-list/user-vocabulary/user-vocabulary.component";
 
 
 const routes: Routes = [
   {
     path: "",
     component: VocabularyComponent
+  }, {
+    path: ":id",
+    component: UserVocabularyComponent
   }
   // {
   //   path: ":courseUrl",

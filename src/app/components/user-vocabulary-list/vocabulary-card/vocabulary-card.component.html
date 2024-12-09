@@ -1,4 +1,4 @@
-<div class="user-vocabulary-card mat-elevation-z4 mat-card">
+<div class="user-vocabulary-card mat-elevation-z4 mat-card" (click)="updateStoreWithCurrentId()" [routerLink]="['/vocabulary', vocabulary._id]">
   <label class="mat-label">Name</label>
   <span class="mat-value">{{ vocabulary.name }}</span>
   <label class="mat-label">Description</label>

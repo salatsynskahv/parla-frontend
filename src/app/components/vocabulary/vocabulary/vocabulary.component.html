@@ -1,22 +1,10 @@
 <div class="vocabulary-container">
   <div class="header">
 <!--    <button class="add-button" mat-button color="primary" (click)="openAddTermDialog()"><span class="material-symbols-outlined" >add</span></button><div class="search-form"></div>-->
-    <mat-form-field>
-      <input matInput type="text" class="word-input" (keydown.enter)="openSearchDialog()" [formControl]="word">
-    </mat-form-field>
-    <button mat-button (click)="openSearchDialog() ">
-      <mat-icon aria-hidden="false" fontIcon="search"></mat-icon>
-    </button>
+<!--    <mat-form-field>-->
+<!--      <input matInput type="text" class="word-input" (keydown.enter)="openSearchDialog()" [formControl]="word">-->
+<!--    </mat-form-field>-->
   </div>
-
-
   <app-user-vocabulary-list></app-user-vocabulary-list>
-<!--  <div *ngIf="store.isLoading()">-->
-<!--   Loading ...-->
-<!--  </div>-->
-<!--  <div *ngIf="!store.isLoading()">-->
-<!--    <div *ngFor="let d of store.vocabulary() ">-->
-<!--      <span class="term">{{d.term }} </span>  - <span class="explanation"> {{d.explanation }}</span>-->
-<!--    </div>-->
-<!--  </div>-->
+
 </div>
