@@ -10,7 +10,7 @@ export const routes: Routes = [
   },
   {
     path: "vocabulary",
-    loadChildren: () => import('./components/vocabulary/vocabulary.module').then(m => m.VocabularyModule)
+    loadComponent: () => import('./components/vocabulary/vocabulary/vocabulary.component').then(m => m.VocabularyComponent)
   },
   {
     path: "login",

@@ -13,7 +13,6 @@ import {VocabularyListComponent} from "../user-vocabulary-list/vocabulary-list.c
 
 
 @NgModule({
-  declarations: [VocabularyComponent, AddTermDialogComponent],
     imports: [
         CommonModule,
         MatButtonModule,

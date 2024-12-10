@@ -8,10 +8,7 @@ import {SocialAuthService} from "../../services/social-auth.service";
   selector: 'app-login',
   standalone: true,
   imports: [
-    ReactiveFormsModule,
-    MatInput,
-    MatFormField,
-    DecimalValidatorDirective
+    ReactiveFormsModule
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.less'

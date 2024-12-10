@@ -5,7 +5,6 @@ import {MatInput} from "@angular/material/input";
 import {FormControl, ReactiveFormsModule} from "@angular/forms";
 import {VocabularyService} from "../../services/vocabulary.service";
 import {MatIconModule} from "@angular/material/icon";
-import {Dialog} from "@angular/cdk/dialog";
 import {MAT_DIALOG_DATA} from "@angular/material/dialog";
 import {JsonPipe} from "@angular/common";
 import {Translations} from "../../entities/Translations";
@@ -18,8 +17,7 @@ import {Translations} from "../../entities/Translations";
     MatFormField,
     MatInput,
     ReactiveFormsModule,
-    MatIconModule,
-    JsonPipe
+    MatIconModule
   ],
   templateUrl: './search.component.html',
   styleUrl: './search.component.less'

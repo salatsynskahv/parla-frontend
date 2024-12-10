@@ -1,23 +1,20 @@
 import {Component, OnInit, computed, effect, inject, signal} from '@angular/core';
-import {FormControl} from "@angular/forms";
 import {ParlaStore} from '../../../state/store';
-import {
-  MatDialog
-} from '@angular/material/dialog';
-import {AddTermDialogComponent} from '../dialogs/add-term-dialog/add-term-dialog.component';
 import {Term} from '../../../entities/vocabulary';
-import {SearchComponent} from "../../search/search.component";
+import {VocabularyListComponent} from "../../user-vocabulary-list/vocabulary-list.component";
 
 export const userId = '64b6fc3f8d2eaa00123abcde';
 @Component({
   selector: 'app-vocabulary',
   templateUrl: './vocabulary.component.html',
   styleUrl: './vocabulary.component.less',
+  standalone: true,
+  imports: [
+    VocabularyListComponent
+  ],
   // changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class VocabularyComponent implements OnInit {
-
-
   readonly loading = computed(() => {
     if (this.store.isLoading()) {
       console.log('isLoading');
