@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { AsyncPipe, CommonModule, JsonPipe, NgForOf, NgIf } from '@angular/common';
 import {VocabularyRoutingModule} from "./vocabulary-routing.module";
 import {MatButton, MatButtonModule} from "@angular/material/button";
-import { ParlaStore } from '../../state/store';
 import { VocabularyComponent } from './vocabulary/vocabulary.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatFormField, MatLabel } from '@angular/material/form-field';

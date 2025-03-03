@@ -1,7 +1,10 @@
-<app-user-vocabulary-card [vocabulary]="testVocabulary">
+@for (item of testVocabulary(); track item._id) {
+  <app-user-vocabulary-card [vocabulary]="item">
+  </app-user-vocabulary-card>
+}
 
-</app-user-vocabulary-card>
-
-<button  mat-fab class="user-vocabulary-list-add-button">
+<button
+  (click)="handleCreateList()"
+  mat-fab class="user-vocabulary-list-add-button">
   <mat-icon>add</mat-icon>
 </button>

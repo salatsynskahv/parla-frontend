@@ -1,0 +1,23 @@
+<div class="content-grid">
+  <form [formGroup]="form">
+  <mat-form-field>
+    <mat-label>Name</mat-label>
+    <input matInput formControlName="name">
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Description</mat-label>
+    <input matInput formControlName="description">
+  </mat-form-field>
+
+  <div>
+    <button mat-button (click)="onSave()">
+      Save
+    </button>
+    <button mat-button (click)="onCancel()">
+      Cancel
+    </button>
+
+  </div>
+  </form>
+</div>
