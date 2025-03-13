@@ -1,15 +1,30 @@
-import {Component, Input} from '@angular/core';
+import {Component, EventEmitter, inject, Input, Output} from '@angular/core';
 import {Vocabulary} from "../../../entities/vocabulary";
+import {MatIcon} from "@angular/material/icon";
+import {MatButton} from "@angular/material/button";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-user-vocabulary-card',
   standalone: true,
-  imports: [],
+  imports: [
+    MatIcon,
+    MatButton
+  ],
   templateUrl: './user-vocabulary-card.component.html',
   styleUrl: './user-vocabulary-card.component.less'
 })
 export class UserVocabularyCardComponent {
 
   @Input() vocabulary!: Vocabulary;
+  @Output() onDeleteClick: EventEmitter<string> = new EventEmitter();
+  router = inject(Router);
 
+  onDeleteClickHandler(): void {
+    this.onDeleteClick.emit(this.vocabulary._id);
+  }
+
+  onCardClick() {
+    this.router.navigate(['/vocabulary/'+ this.vocabulary._id]);
+  }
 }

@@ -1,7 +1,7 @@
 import {Component, OnInit, computed, effect, inject, signal} from '@angular/core';
-import {FormControl} from "@angular/forms";
+import {FormControl, ReactiveFormsModule} from "@angular/forms";
 import {ParlaStore} from '../../../state/store';
-import {MatIconModule} from '@angular/material/icon';
+import {MatIcon, MatIconModule} from '@angular/material/icon';
 import {
   MatDialog
 } from '@angular/material/dialog';
@@ -10,6 +10,10 @@ import {Term} from '../../../entities/vocabulary';
 import {DictionaryService} from "../../../services/dictionary.service";
 import {EMPTY, Observable, of} from "rxjs";
 import {SearchComponent} from "../../search/search.component";
+import {MatFormField} from "@angular/material/form-field";
+import {UserVocabularyListComponent} from "../../user-vocabulary-list/user-vocabulary-list.component";
+import {MatInput} from "@angular/material/input";
+import {MatButton} from "@angular/material/button";
 
 
 type Translations  = {
@@ -25,6 +29,15 @@ type Result = {
   selector: 'app-vocabulary',
   templateUrl: './vocabulary.component.html',
   styleUrl: './vocabulary.component.less',
+  standalone: true,
+  imports: [
+    MatFormField,
+    UserVocabularyListComponent,
+    MatIcon,
+    ReactiveFormsModule,
+    MatInput,
+    MatButton
+  ],
   // changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class VocabularyComponent implements OnInit {

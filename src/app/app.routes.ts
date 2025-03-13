@@ -11,7 +11,7 @@ export const routes: Routes = [
   },
   {
     path: "vocabulary",
-    loadChildren: () => import('./components/vocabulary/vocabulary.module').then(m => m.VocabularyModule)
+    loadChildren: () => import('./components/vocabulary/vocabulary.routes').then(c => c.routes)
   },
   {
     path: "login",

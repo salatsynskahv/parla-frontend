@@ -18,8 +18,7 @@ import {Translations} from "../../entities/Translations";
     MatFormField,
     MatInput,
     ReactiveFormsModule,
-    MatIconModule,
-    JsonPipe
+    MatIconModule
   ],
   templateUrl: './search.component.html',
   styleUrl: './search.component.less'

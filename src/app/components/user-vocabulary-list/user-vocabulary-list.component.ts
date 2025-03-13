@@ -1,4 +1,4 @@
-import {Component, inject, OnInit, signal} from '@angular/core';
+import {Component, inject, OnInit, resource, signal} from '@angular/core';
 import {UserVocabularyCardComponent} from "./user-vocabulary-card/user-vocabulary-card.component";
 import {Vocabulary} from "../../entities/vocabulary";
 import {MatFabButton} from "@angular/material/button";
@@ -22,6 +22,9 @@ export class UserVocabularyListComponent implements OnInit {
 
   readonly dialog = inject(MatDialog);
   vocabularyService = inject(VocabularyService);
+  vocabularyList = resource({
+    loader: ({request}) => this.vocabularyService.getVocabulary()
+  })
 
   testVocabulary = signal<{
     _id: string,
@@ -31,25 +34,25 @@ export class UserVocabularyListComponent implements OnInit {
   }[]>([]);
 
   handleCreateList(): void {
-
-    this.dialog.open(CreateVocabularyListComponent, {
+    const dialogRef = this.dialog.open(CreateVocabularyListComponent, {
       width: '300px'
-    })
-    this.testVocabulary.update((list) => [...list,
-      {
-        _id: list.length.toString(),
-        name: 'test' + list.length.toString(),
-        description: 'description' + list.length.toString(),
-        terms: []
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      this.vocabularyList.reload();
+    });
+  }
+
+  handleDeleteVocabulary(id: string): void {
+    this.vocabularyService.deleteVocabulary(id).subscribe(
+      () => {
+        this.vocabularyList.reload();
       }
-    ])
+    );
+
   }
 
   ngOnInit(): void {
-    this.vocabularyService.getVocabulary().subscribe(
-      result => this.testVocabulary.set(result)
-    );
+    this.vocabularyList.reload();
+    console.log(this.vocabularyList.value())
   }
-
-
 }

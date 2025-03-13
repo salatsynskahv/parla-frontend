@@ -1,6 +1,10 @@
-@for (item of testVocabulary(); track item._id) {
-  <app-user-vocabulary-card [vocabulary]="item">
+@for (item of vocabularyList.value(); track item._id) {
+  <app-user-vocabulary-card
+    [vocabulary]="item"
+    (onDeleteClick)="handleDeleteVocabulary(item._id)"
+  >
   </app-user-vocabulary-card>
+
 }
 
 <button

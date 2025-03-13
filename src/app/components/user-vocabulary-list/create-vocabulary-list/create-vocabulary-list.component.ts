@@ -13,7 +13,10 @@ class FormDialogComponent {
 @Component({
   selector: 'app-create-vocabulary-list',
   standalone: true,
-  imports: [MatFormFieldModule, MatInputModule, MatSelectModule, MatButton, ReactiveFormsModule],
+  imports: [
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule, MatButton, ReactiveFormsModule],
   templateUrl: './create-vocabulary-list.component.html',
   styleUrl: './create-vocabulary-list.component.less'
 })

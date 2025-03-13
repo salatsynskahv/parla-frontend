@@ -1,12 +1,17 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 import {VocabularyComponent} from "./vocabulary/vocabulary.component";
+import {VocabularyEntityComponent} from "./vocabulary-entity/vocabulary-entity.component";
 
 
-const routes: Routes = [
+export const routes: Routes = [
   {
     path: "",
     component: VocabularyComponent
+  },
+  {
+    path: ":id",
+    component: VocabularyEntityComponent
   }
   // {
   //   path: ":courseUrl",
@@ -35,14 +40,3 @@ const routes: Routes = [
   //   ]
   // }
 ];
-
-@NgModule({
-  imports: [
-    RouterModule.forChild(routes)
-  ],
-  exports: [RouterModule],
-  providers: []
-})
-export class VocabularyRoutingModule {
-
-}

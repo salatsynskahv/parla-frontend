@@ -1,13 +1,19 @@
 .user-vocabulary-card {
   width: 95%;
   display: grid;
-  grid-template-columns: min-content min-content;
+  grid-template-areas: "name delete"
+                        "description .";
+  grid-template-columns: auto 50px;
   gap: 0.5rem 2rem;
   margin: 16px auto; /* Center the card with some margin */
   padding: 16px; /* Add padding inside the card */
   border-radius: 10px; /* Keep the rounded corners */
   background-color: #f5f5f5; /* Light background for Material look */
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  &-info > * {
+    margin-right: 20px ;
+  }
 }
 
 

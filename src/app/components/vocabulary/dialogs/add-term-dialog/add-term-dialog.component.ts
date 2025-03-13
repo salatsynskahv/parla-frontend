@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { MatButton } from '@angular/material/button';
 import { MatDialogRef } from '@angular/material/dialog';
-import { MatFormField } from '@angular/material/input';
+import {MatFormField, MatInput, MatLabel} from '@angular/material/input';
 import {
   FormControl,
   FormGroupDirective,
@@ -20,6 +20,14 @@ import { patchState } from '@ngrx/signals';
 @Component({
   selector: 'add-term-dialog',
   templateUrl: './add-term-dialog.component.html',
+  standalone: true,
+  imports: [
+    MatLabel,
+    MatFormField,
+    ReactiveFormsModule,
+    MatButton,
+    MatInput
+  ],
   styleUrl: './add-term-dialog.component.less'
 })
 export class AddTermDialogComponent {
