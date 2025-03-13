@@ -39,7 +39,7 @@ export class AppComponent {
 
   addTerm(text: string) {
     this.store.addTerm({term: 'Hi', explanation: 'Test'});
-    console.log(this.store.vocabulary());
+    console.log(this.store.vocabularies());
   }
 
 

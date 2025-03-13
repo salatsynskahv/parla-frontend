@@ -1,8 +1,23 @@
-<header>
-<div>
-  <button mat-button routerLink="vocabulary"> Vocabulary </button>
-  <button mat-button>Lessons</button>
-</div>
-<button mat-button="justify-self: end" routerLink="login">Login</button>
-</header>
+<header class="bg-gray-200 text-white py-4 px-6">
+  <div class="flex w-11/12 justify-between">
+    <!-- Left-aligned buttons (Vocabulary and Lessons) -->
+    <div class="">
+      <button mat-button routerLink="vocabulary" class="hover:bg-gray-700 rounded-md transition-all">Vocabulary</button>
+      <button mat-button class="hover:bg-gray-700 py-2 px-4 rounded-md transition-all">Lessons</button>
+    </div>
 
+    <!-- Center-aligned Search button -->
+    <div class="justify-items-center">
+      <button mat-button (click)="openSearchDialog()" class="hover:bg-gray-700 p-2 rounded-md transition-all">
+        <mat-icon aria-hidden="false" fontIcon="search"></mat-icon>
+      </button>
+    </div>
+
+    <!-- Right-aligned Login button -->
+    <div class="justify-items-end">
+      <button mat-button routerLink="login" class="py-2 px-4 rounded-md bg-blue-600 hover:bg-blue-700 transition-all">
+        Login
+      </button>
+    </div>
+  </div>
+</header>

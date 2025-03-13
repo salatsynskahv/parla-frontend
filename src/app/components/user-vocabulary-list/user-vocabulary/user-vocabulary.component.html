@@ -1,0 +1,10 @@
+<mat-list class="space-y-2">
+  @for (item of currentVocabulary?.terms; track item._id) {
+    <mat-list-item class="p-4 border-b border-gray-200 hover:bg-gray-100 transition-all">
+      <div class="font-semibold text-lg text-gray-800">{{ item.word }}</div>
+      <div class="text-sm text-gray-600">{{ item.explanation }}</div>
+    </mat-list-item>
+  } @empty {
+    <mat-list-item class="p-4 text-center text-gray-500">There are no items.</mat-list-item>
+  }
+</mat-list>
