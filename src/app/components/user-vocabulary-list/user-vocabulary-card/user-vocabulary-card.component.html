@@ -1,6 +1,13 @@
-<mat-card [appearance]="'outlined'">
-  <mat-card-content class="vocabulary-card">
-    {{vocabulary.name}}
-  </mat-card-content>
-
-</mat-card>
+<div class="user-vocabulary-card mat-elevation-z4 mat-card" (click)="onCardClick()">
+    <div  class="user-vocabulary-card-info" style="grid-area: name">
+        <label class="mat-label">Name: </label>
+        <span class="mat-value">{{ vocabulary.name }}</span>
+    </div>
+    <div class="user-vocabulary-card-info">
+        <label style="grid-area: description" class="mat-label">Description: </label>
+        <span style="grid-area: description" class="mat-value">{{ vocabulary.description }}</span>
+    </div>
+    <button style="grid-area: delete" mat-button (click)="onDeleteClickHandler($event)">
+        <mat-icon fontIcon="delete"></mat-icon>
+    </button>
+</div>

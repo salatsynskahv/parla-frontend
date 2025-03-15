@@ -1,7 +1,8 @@
 import {inject, Injectable} from '@angular/core';
 import {HttpWrapperService} from "./http-wrapper.service";
 import {lastValueFrom, map} from "rxjs";
-import {Vocabulary} from "../entities/vocabulary";
+import {Term, Vocabulary} from "../entities/vocabulary";
+import {HttpHeaders} from "@angular/common/http";
 
 @Injectable({
   providedIn: 'root'
@@ -25,7 +26,7 @@ export class VocabularyService {
     ));
   }
 
-  createVocabulary(document: {name: string, description: string}) {
+  createVocabulary(document: { name: string, description: string }) {
     return this.httpService.post<any>('/mogobdApi/endpoint/data/v1/action/insertOne', {
       dataSource: 'Cluster1',
       database: 'Parla',
@@ -42,8 +43,19 @@ export class VocabularyService {
       database: 'Parla',
       collection: 'Vocabularies',
       filter: {
-        _id: { $oid: id }
+        _id: {$oid: id}
       }
     })
+  }
+
+  getVocabularyTerms(id: string): Promise<Term[]> {
+    return lastValueFrom(this.httpService.post<any>('/mogobdApi/endpoint/data/v1/action/find', {
+      dataSource: 'Cluster1',
+      database: 'Parla',
+      collection: 'Terms',
+      filter: {}
+    }).pipe(
+      map(result => result.documents),
+    ));
   }
 }

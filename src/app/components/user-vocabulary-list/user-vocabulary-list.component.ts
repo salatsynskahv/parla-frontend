@@ -1,4 +1,4 @@
-import {Component, inject, OnInit, resource, signal} from '@angular/core';
+import {Component, computed, inject, OnInit, resource, signal} from '@angular/core';
 import {UserVocabularyCardComponent} from "./user-vocabulary-card/user-vocabulary-card.component";
 import {Vocabulary} from "../../entities/vocabulary";
 import {MatFabButton} from "@angular/material/button";
@@ -28,6 +28,15 @@ export class UserVocabularyListComponent implements OnInit {
   vocabularyList = resource({
     loader: ({request}) => this.vocabularyService.getVocabulary()
   })
+  vocabularyListValues = computed(() => this.vocabularyList.value())
+
+  fakeList: Vocabulary[] = [
+    {
+      name: 'value',
+      _id: 'id',
+      terms: []
+    }
+  ]
 
   testVocabulary = signal<{
     _id: string,
@@ -56,6 +65,5 @@ export class UserVocabularyListComponent implements OnInit {
 
   ngOnInit(): void {
     this.vocabularyList.reload();
-    console.log(this.vocabularyList.value())
   }
 }

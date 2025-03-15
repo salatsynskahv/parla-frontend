@@ -22,7 +22,9 @@ export class UserVocabularyCardComponent {
   @Output() onDeleteClick: EventEmitter<string> = new EventEmitter();
   router = inject(Router);
 
-  onDeleteClickHandler(): void {
+  onDeleteClickHandler($event: Event): void {
+    $event.preventDefault();
+    $event.stopPropagation();
     this.onDeleteClick.emit(this.vocabulary._id);
   }
 

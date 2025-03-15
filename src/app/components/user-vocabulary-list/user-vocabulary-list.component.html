@@ -1,5 +1,4 @@
-<p>List:</p>
-@for (item of vocabularyList.value(); track item._id) {
+@for(item of vocabularyList.value(); track item.name) {
 <app-user-vocabulary-card
     [vocabulary]="item"
     (onDeleteClick)="handleDeleteVocabulary(item._id)">
@@ -7,7 +6,8 @@
 }
 
 <button
+  class="user-vocabulary-list-add-button"
   (click)="handleCreateList()"
-  mat-fab class="user-vocabulary-list-add-button">
+  mat-fab >
   <mat-icon>add</mat-icon>
 </button>

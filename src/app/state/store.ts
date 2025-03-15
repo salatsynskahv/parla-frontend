@@ -29,15 +29,15 @@ export const ParlaStore = signalStore(
           );
         },
         setCurrentVocabulary(vocabularyId: string) {
-          // const currentVocabulary = store.vocabularies().find(item => item._id === vocabularyId);
-          // if(currentVocabulary) {
-          //   vocabularyService.getVocabularyTerms(vocabularyId).((result) => {
-          //       currentVocabulary.terms = result;
-          //       console.log("current Vocabulary");
-          //       console.log(JSON.stringify(result));
-          //       patchState(store, {currentVocabulary: currentVocabulary});
-          //     })
-          // }
+          const currentVocabulary = store.vocabularies().find(item => item._id === vocabularyId);
+          if(currentVocabulary) {
+            // vocabularyService.getVocabularyTerms(vocabularyId).((result) => {
+            //     currentVocabulary.terms = result;
+            //     console.log("current Vocabulary");
+            //     console.log(JSON.stringify(result));
+            //     patchState(store, {currentVocabulary: currentVocabulary});
+            //   })
+          }
         },
         addTerm(term: Term) {
           patchState(store, {
