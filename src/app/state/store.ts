@@ -22,23 +22,22 @@ export const ParlaStore = signalStore(
   withMethods(
     (store, vocabularyService = inject(VocabularyService)) => (
       {
-        loadAll(userId: string) {
+        loadAll() {
           patchState(store, {isLoading: true});
-          vocabularyService.getVocabulary(userId).subscribe(
+          vocabularyService.getVocabulary().then(
             dictionary => patchState(store, {vocabularies: dictionary, isLoading: false})
           );
         },
         setCurrentVocabulary(vocabularyId: string) {
-          const currentVocabulary = store.vocabularies().find(item => item._id === vocabularyId);
-          if(currentVocabulary) {
-            vocabularyService.getVocabularyTerms(vocabularyId)
-              .subscribe((result) => {
-                currentVocabulary.terms = result;
-                console.log("current Vocabulary");
-                console.log(JSON.stringify(result));
-                patchState(store, {currentVocabulary: currentVocabulary});
-              })
-          }
+          // const currentVocabulary = store.vocabularies().find(item => item._id === vocabularyId);
+          // if(currentVocabulary) {
+          //   vocabularyService.getVocabularyTerms(vocabularyId).((result) => {
+          //       currentVocabulary.terms = result;
+          //       console.log("current Vocabulary");
+          //       console.log(JSON.stringify(result));
+          //       patchState(store, {currentVocabulary: currentVocabulary});
+          //     })
+          // }
         },
         addTerm(term: Term) {
           patchState(store, {

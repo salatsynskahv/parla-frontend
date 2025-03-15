@@ -3,13 +3,15 @@ import {Vocabulary} from "../../../entities/vocabulary";
 import {MatIcon} from "@angular/material/icon";
 import {MatButton} from "@angular/material/button";
 import {Router} from "@angular/router";
+import {MatCard, MatCardModule} from "@angular/material/card";
 
 @Component({
   selector: 'app-user-vocabulary-card',
   standalone: true,
   imports: [
     MatIcon,
-    MatButton
+    MatButton,
+    MatCardModule
   ],
   templateUrl: './user-vocabulary-card.component.html',
   styleUrl: './user-vocabulary-card.component.less'

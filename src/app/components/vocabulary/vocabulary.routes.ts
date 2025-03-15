@@ -2,12 +2,13 @@ import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 import {VocabularyComponent} from "./vocabulary/vocabulary.component";
 import {VocabularyEntityComponent} from "./vocabulary-entity/vocabulary-entity.component";
+import {UserVocabularyListComponent} from "../user-vocabulary-list/user-vocabulary-list.component";
 
 
 export const routes: Routes = [
   {
     path: "",
-    component: VocabularyComponent
+    component: UserVocabularyListComponent
   },
   {
     path: ":id",

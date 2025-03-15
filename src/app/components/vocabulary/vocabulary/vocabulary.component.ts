@@ -7,7 +7,6 @@ import {
 } from '@angular/material/dialog';
 import {AddTermDialogComponent} from '../dialogs/add-term-dialog/add-term-dialog.component';
 import {Term} from '../../../entities/vocabulary';
-import {DictionaryService} from "../../../services/dictionary.service";
 import {EMPTY, Observable, of} from "rxjs";
 import {SearchComponent} from "../../search/search.component";
 import {MatFormField} from "@angular/material/form-field";
@@ -32,7 +31,6 @@ type Result = {
   standalone: true,
   imports: [
     MatFormField,
-    UserVocabularyListComponent,
     MatIcon,
     ReactiveFormsModule,
     MatInput,
@@ -75,7 +73,7 @@ export class VocabularyComponent implements OnInit {
   constructor() {
     effect(() => {
       console.log('Effect isLoading: ' + this.store.isLoading());
-      console.log(JSON.stringify(this.store.vocabulary()));
+     // console.log(JSON.stringify(this.store.vocabulary()));
     }, {
       allowSignalWrites: true
     });

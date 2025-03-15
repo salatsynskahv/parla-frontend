@@ -8,6 +8,7 @@ import {MatIconModule} from "@angular/material/icon";
 import {MAT_DIALOG_DATA} from "@angular/material/dialog";
 import {JsonPipe} from "@angular/common";
 import {Translations} from "../../entities/Translations";
+import {DictionaryService} from "../../services/dictionary.service";
 
 @Component({
   selector: 'app-search',
@@ -41,7 +42,7 @@ export class SearchComponent implements OnInit {
     return result;
   })
 
-  private dictionary = inject(VocabularyService);
+  private dictionary = inject(DictionaryService);
   readonly data = inject<{ searchText: string }>(MAT_DIALOG_DATA);
 
 

@@ -6,6 +6,7 @@ import {MatIconModule} from "@angular/material/icon";
 import {MatDialog} from "@angular/material/dialog";
 import {CreateVocabularyListComponent} from "./create-vocabulary-list/create-vocabulary-list.component";
 import {VocabularyService} from "../../services/vocabulary.service";
+import {JsonPipe, NgForOf} from "@angular/common";
 
 @Component({
   selector: 'app-user-vocabulary-list',
@@ -13,10 +14,12 @@ import {VocabularyService} from "../../services/vocabulary.service";
   imports: [
     UserVocabularyCardComponent,
     MatFabButton,
-    MatIconModule
+    MatIconModule,
+    NgForOf,
+    JsonPipe
   ],
   templateUrl: './user-vocabulary-list.component.html',
-  styleUrl: './user-vocabulary-list.component.less'
+  styleUrl: './user-user-vocabulary-list.component.less'
 })
 export class UserVocabularyListComponent implements OnInit {
 
