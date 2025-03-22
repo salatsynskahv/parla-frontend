@@ -2,6 +2,7 @@ import {Component, effect, inject, Input, OnInit} from '@angular/core';
 import {MatList, MatListItem} from "@angular/material/list";
 import {Vocabulary} from "../../../entities/vocabulary";
 import {ParlaStore} from "../../../state/store";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-user-vocabulary',
@@ -13,14 +14,16 @@ import {ParlaStore} from "../../../state/store";
   templateUrl: './user-vocabulary.component.html',
   styleUrl: './user-vocabulary.component.less'
 })
-export class UserVocabularyComponent {
+export class UserVocabularyComponent implements OnInit{
   store = inject(ParlaStore);
   currentVocabulary: Vocabulary | undefined;
+  route = inject(ActivatedRoute);
 
-  constructor() {
-    effect(() => {
-      this.currentVocabulary = this.store.currentVocabulary();
-    });
+  ngOnInit(): void {
+    const vocabularyId = this.route.snapshot.params['id'];
+    console.log(vocabularyId);
+    this.store.setCurrentVocabulary(vocabularyId);
   }
+
 
 }

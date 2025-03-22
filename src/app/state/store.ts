@@ -1,7 +1,7 @@
-import {patchState, signalStore, withMethods, withState} from "@ngrx/signals";
+import {patchState, signalStore, withComputed, withMethods, withState} from "@ngrx/signals";
 import {Term, Vocabulary} from "../entities/vocabulary";
 import {VocabularyService} from "../services/vocabulary.service";
-import {inject} from "@angular/core";
+import {computed, inject} from "@angular/core";
 
 
 export type ParlaState = {
@@ -19,6 +19,9 @@ export const initialState: ParlaState = {
 export const ParlaStore = signalStore(
   {providedIn: 'root'},
   withState(initialState),
+  // withComputed(({vocabularies, currentVocabulary}) => ({
+  //   currentVocabulary: computed(() => currentVocabulary())
+  // })),
   withMethods(
     (store, vocabularyService = inject(VocabularyService)) => (
       {
@@ -29,14 +32,14 @@ export const ParlaStore = signalStore(
           );
         },
         setCurrentVocabulary(vocabularyId: string) {
-          const currentVocabulary = store.vocabularies().find(item => item._id === vocabularyId);
+         const currentVocabulary = store.vocabularies().find(item => item._id === vocabularyId);
           if(currentVocabulary) {
-            // vocabularyService.getVocabularyTerms(vocabularyId).((result) => {
-            //     currentVocabulary.terms = result;
-            //     console.log("current Vocabulary");
-            //     console.log(JSON.stringify(result));
-            //     patchState(store, {currentVocabulary: currentVocabulary});
-            //   })
+            vocabularyService.getVocabularyTerms(currentVocabulary._id).then((result: Term[]) => {
+                currentVocabulary.terms = result;
+                console.log("current Vocabulary");
+                console.log(JSON.stringify(result));
+                patchState(store, {currentVocabulary: currentVocabulary});
+              })
           }
         },
         addTerm(term: Term) {

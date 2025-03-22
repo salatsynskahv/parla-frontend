@@ -52,10 +52,10 @@ export class VocabularyService {
     return lastValueFrom(this.httpService.post<any>('/mogobdApi/endpoint/data/v1/action/find', {
       dataSource: 'Cluster1',
       database: 'Parla',
-      collection: 'Terms',
+      collection: 'Entries',
       filter: {}
     }).pipe(
-      map(result => result.documents),
+      map(result => result.documents as Term[]),
     ));
   }
 }

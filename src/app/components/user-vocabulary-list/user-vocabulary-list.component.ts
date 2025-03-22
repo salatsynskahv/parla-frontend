@@ -7,6 +7,7 @@ import {MatDialog} from "@angular/material/dialog";
 import {CreateVocabularyListComponent} from "./create-vocabulary-list/create-vocabulary-list.component";
 import {VocabularyService} from "../../services/vocabulary.service";
 import {JsonPipe, NgForOf} from "@angular/common";
+import {ParlaStore} from "../../state/store";
 
 @Component({
   selector: 'app-user-vocabulary-list',
@@ -14,9 +15,7 @@ import {JsonPipe, NgForOf} from "@angular/common";
   imports: [
     UserVocabularyCardComponent,
     MatFabButton,
-    MatIconModule,
-    NgForOf,
-    JsonPipe
+    MatIconModule
   ],
   templateUrl: './user-vocabulary-list.component.html',
   styleUrl: './user-user-vocabulary-list.component.less'
@@ -28,7 +27,8 @@ export class UserVocabularyListComponent implements OnInit {
   vocabularyList = resource({
     loader: ({request}) => this.vocabularyService.getVocabulary()
   })
-  vocabularyListValues = computed(() => this.vocabularyList.value())
+  vocabularyListValues = computed(() => this.vocabularyList.value());
+  store = inject(ParlaStore);
 
   fakeList: Vocabulary[] = [
     {
@@ -63,7 +63,9 @@ export class UserVocabularyListComponent implements OnInit {
 
   }
 
+  //todo Fix - leave only one
   ngOnInit(): void {
     this.vocabularyList.reload();
+    this.store.loadAll();
   }
 }
