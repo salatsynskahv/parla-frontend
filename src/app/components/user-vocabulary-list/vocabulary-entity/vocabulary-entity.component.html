@@ -1,0 +1,6 @@
+{{ vocabularyName()}}
+<div>
+@for(term of terms(); track term._id){
+  <p><span>{{term.word}}</span> - <span>{{term.explanation}}</span> </p>
+}
+</div>
